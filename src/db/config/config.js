@@ -7,7 +7,7 @@ module.exports = {
     host: process.env.DB_HOST || 'localhost',
     dialect: "postgres",
     migrationStorage: 'json',
-    seederStorage: 'json'
+    seederStorage: 'json',
   },
   test: {},
   production: {},
