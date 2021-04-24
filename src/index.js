@@ -112,29 +112,46 @@ async function getTasksWithOwner(){
 }
 */
 
-import {CreditCard, sequelize} from './db/models';
-async function card_transaction(fromCardId, toCard, value){
-  try{
-    const fromCard = await CreditCard.findByPk(fromCardId);
-    const toCard = await CreditCard.findByPk(toCardId);
+//trasaction
+/*
+import { CreditCard, sequelize } from './db/models';
+async function card_transaction(fromCardId, toCardId, value){
+    try {
+      const fromCard = await CreditCard.findByPk(fromCardId);
+      const toCard = await CreditCard.findByPk(toCardId);
 
-    console.log('Before transaction: ');
-    console.log(fromCard.get());
-    console.log(toCard.get());
+      console.log('Before transaction:');
+      console.log(fromCard.get());
+      console.log(toCard.get());
 
-    const tr = await sequelize.transaction();
-    fromCard.balance -= value;
-    const updateFromCard = await fromCard.save({transaction: tr});
-    toCard.balance += value;
-    const upadateToCard = await toCard.save({transaction: tr});
-    await tr.commit();
+      const tr = await sequelize.transaction();
+      fromCard.balance -= value;
+      const updatedFromCard = await fromCard.save({ transaction: tr });
+      toCard.balance += value;
+      const updatedToCard = await toCard.save({ transaction: tr });
+      await tr.commit();
 
-    console.log('After transaction: ');
-    console.log(fromCard.get());
-    console.log(toCard.get());
-  }catch(e){
-    console.error(e);
+      console.log('After transaction:');
+      console.log(fromCard.get());
+      console.log(toCard.get());
+    } catch (e) {
+      console.error(e);
   }
 }
 
-card_transaction(1,2, 2000)
+card_transaction(1,2, 2000);*/
+
+//EXPRESS
+
+
+const express = require('express');
+const app = express();
+const port = process.env.PORT || 5000;
+
+app.get('/', (req, res) => {
+  res.send('Hello World!')
+});
+
+app.listen(port, () => {
+  console.log(`Example app listening at http://localhost:${port}`)
+});
