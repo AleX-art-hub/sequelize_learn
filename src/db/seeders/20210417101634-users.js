@@ -1,0 +1,29 @@
+'use strict';
+
+const bcrypt = require('bcrypt');
+
+function generate_users_seed(){
+  const users = [];
+  for(let i=0; i<20; i++){
+    users.push({
+      firstName: `Test${i}`,
+      lastName: `Surname${i}`, 
+      email: `email${i}gamail.com`,
+      login: `userlogin${i}`,
+      passwordHash: bcrypt.hashSync(`password${i}`,10),
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    });
+  }
+  return users;
+}
+
+module.exports = {
+  up: async (queryInterface, Sequelize) => {
+    return queryInterface.bulkInsert('Users', generate_users_seed(), {});
+  },
+
+  down: async (queryInterface, Sequelize) => {
+    return queryInterface.bulkDelete('Users', null, {});
+  },
+};

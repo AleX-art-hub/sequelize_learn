@@ -143,13 +143,25 @@ card_transaction(1,2, 2000);*/
 
 //EXPRESS
 
+import express from 'express';
+import { user } from './db/models';
+import router from './routes';
 
-const express = require('express');
+
 const app = express();
 const port = process.env.PORT || 5000;
+app.use(express.json());
+app.use(router);
 
-app.get('/', (req, res) => {
-  res.send('Hello World!')
+app.post('/user', async (req, res, next)=>{
+  try{
+    const createdUser = await User.create(req.body);
+    return res.send(createdUser);
+    //console.log(req.body);
+  } catch (e) {next(e);}
+});
+app.use((err,req,res)=>{
+  res.status(500).send('Smith broken!')
 });
 
 app.listen(port, () => {

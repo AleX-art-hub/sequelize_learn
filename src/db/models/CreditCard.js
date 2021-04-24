@@ -25,7 +25,7 @@ module.exports = (sequelize, DataTypes) =>{
     },
     {
         timestamps: false,
-        tableName: 'creditcard'
+        tableName: 'creditcard',
     });
     return CreditCard;
 };
