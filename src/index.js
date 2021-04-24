@@ -79,3 +79,33 @@ const deleteUser = async (condition) => {
 
 deleteUser({ lastName: "Surname88" });
 */
+
+async function getUserWithTask(){
+  try{
+    const result = await User.findAll({
+      limit: 10,
+      attributes: {exclude: ['password']}
+    });
+    return result.map(item => item.get());
+  }catch(e){}
+}
+
+getUserWithTask().then(console.log);
+
+async function getTasksWithOwner(){
+  try{
+    const result = await Task.findAll({
+      limit: 10,
+      where: {
+        isDone: true,
+      },
+      include: [
+        {
+          model: User,
+          as: 'owner'
+        }
+      ]
+    });
+    return result.map(item => item.get());
+  }
+}
