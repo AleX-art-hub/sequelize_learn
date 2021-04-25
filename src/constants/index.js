@@ -8,7 +8,7 @@ export const ROLE = Object.freeze({
     MODERATOR: 'MODERATOR',
 });
 
-export const ACTION = OBJECT.freeze({
+export const ACTION = Object.freeze({
     CREATE: 'CREATE',
     READ: 'READ',
     UPDATE: 'UPDATE',
