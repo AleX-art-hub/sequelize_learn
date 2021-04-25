@@ -10,11 +10,11 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       firstName: {
-        type: Sequelize.STRING(44),
+        type: Sequelize.STRING(64),
         allowNull: false,
       },
       lastName: {
-        type: Sequelize.STRING(44),
+        type: Sequelize.STRING(64),
         allowNull: false,
       },
       email: {
