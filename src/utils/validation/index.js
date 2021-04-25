@@ -1,6 +1,6 @@
 import userSchema from './user';
 import taskSchema from './task';
-export default{
+export default {
     userSchema,
     taskSchema,
 };
