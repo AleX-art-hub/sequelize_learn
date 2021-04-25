@@ -10,4 +10,4 @@ export default Joi.object({
     email: emailSchema.label('Email').optional(),
     login: loginSchema.label().when('$isCreateMode', {then: loginSchema.required() }),
     password: passwordSchema.label().when('$isCreateMode', {then: passwordSchema.required() }),
-})
+}).min(1).max(5);

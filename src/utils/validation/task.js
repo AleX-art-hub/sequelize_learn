@@ -5,4 +5,4 @@ export default Joi.object({
     isDone: Joi.boolean(). label('Is done').optional(),
     value: valueSchema.optional().when('$isCreateMode', {then: valueSchema.required()}),
     deadline: deadlineSchema.optional().when('$isCreateMode', {then: deadlineSchema.required()}),
-})
+}).min(1).max(3);
